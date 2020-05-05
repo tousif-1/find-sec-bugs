@@ -29,7 +29,7 @@ Website : http://find-sec-bugs.github.io/
 
 ## Project Sponsors
 
-The development of Find Security Bugs is supported by [GoSecure](https://github.com/gosecure) since 2016. The support includes the development of new detectors and the research for new vulnerability classes.
+The development of Find Security Bugs is supported by [GoSecure](https://github.com/gosecure) since 2016. The support includes the development of new detectors and the research for new vulnerability classes..
 
 ![GoSecure Logo](website/out_web/images/gosecure.png)
 
