@@ -8,20 +8,30 @@ jdk:
 # It is unlikely that OpenJDK Early Access (openjdk-ea) it will work in the near future, the ASM library supports only bytecode from official release version.
 #  - openjdk-ea
 
+addons:
+  sonarcloud:
+    organization: "sonarqube-123"
+    token:
+      secure: "gYChA39+iP1/79TcexfdqezSt8zblL3y1utvhzGC6pJU+7BVqGbwo7es5eTictWUYqFp7ecdvWFfsLJva0Hxbvvz/XdqkqPIJzkqepjimfG+ffNjNV9WrcaRJR1Dr6qfYQOlJEmkPODMaOpeOMRYkHrIEu7GE2KZCg3HlY2klZIy85nSuxgeXDe58Pgvbb5wcqWcOYpPIur1LrxVEswY7VfyXhfQHz/nj3TMJuVFULf+OSw0tb+09tvUsOU6ifF0sOHPM2NVFTioDtqET4VgCIOgeevsSHdu/ADOPloSCOTuT0NDuX+8Ar/UOm7DKDbn+9XduMrGvedeKzgpLuS4SF1/egm3l24QNu/lujMCBBoy+VzreC8LOwef2Nd+/je1LMCBI4D+0DRSPYg3pfo4i0HRiVfBELTSiwH4tzkfQg4B+OhQNkyLhvDaeBCBnl3kzsSU/GSWvAPUZp3Obm1h7nBHB64dbYwuV3N+k8Or/d8yiiua+NlAgExI414bOlZwSdM2GWVDh8eIcw15Mrfhpmzvqf3kmjhEOAbN+099NKlmX6jfs8OuJfpfyBl8MeCZ532gjpHbTuiob0IM9NggFlC46XViN0OMwYbLHbOAkDDfqqvIBF4PPRswRavlLTdo7medISwUi+FhtYu8LzVr99SLTuTRvgr+JmD63bMKHzw="
+install: true
+
+script:
+  # the following command line builds the project, runs the tests with coverage and then execute the SonarCloud analysis
+  - mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent install sonar:sonar -Dsonar.projectKey=tousif-1_find-sec-bugs
 
 #matrix:
 #  allow_failures:
 #    - jdk: openjdk-ea
 
 # Activate container based infra https://docs.travis-ci.com/user/workers/container-based-infrastructure/
-sudo: false
-install: mvn clean -B -V
-script: mvn clean test -Pjacoco -Ptravisci -B -V
+#sudo: false
+#install: mvn clean -B -V
+#script: mvn clean test -Pjacoco -Ptravisci -B -V
 
 
-after_success:
+#after_success:
 # Codecov.io
 # Report available here : https://codecov.io/gh/find-sec-bugs/find-sec-bugs
 # The tests are runned with the script command (mvn clean test...)
 # Docs: https://docs.codecov.io/v1.0/docs/about-the-codecov-bash-uploader
-  - bash <(curl -s https://codecov.io/bash)
+#  - bash <(curl -s https://codecov.io/bash)
